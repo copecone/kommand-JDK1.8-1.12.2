@@ -16,7 +16,10 @@
 
 package com.github.monun.kommand
 
+import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.ComponentLike
+import net.kyori.adventure.text.TextComponent
+import net.md_5.bungee.api.chat.BaseComponent
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
@@ -40,7 +43,7 @@ fun CommandSender.sendFeedback(message: () -> ComponentLike) {
         }
     }
 
-    sendMessage(message.toString())
+    sendMessage(Component.join(message.invoke().asComponent()).content())
 }
 
 fun CommandSender.sendFeedback(message: String) {
