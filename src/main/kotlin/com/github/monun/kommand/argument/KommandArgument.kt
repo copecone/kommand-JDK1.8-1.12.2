@@ -80,14 +80,6 @@ fun KommandBuilder.double(
 
 fun KommandBuilder.player() = PlayerArgument
 
-fun KommandBuilder.target(filter: Predicate<Entity>? = null): TargetArgument {
-    return if (filter == null) TargetArgument.instance else TargetArgument(filter)
-}
-
-fun KommandBuilder.playerTarget(filter: Predicate<Player>? = null): TargetArgument {
-    return if (filter == null) TargetArgument.player else TargetArgument { it is Player && filter.test(it) }
-}
-
 fun KommandBuilder.world() = WorldArgument
 
 fun <T> KommandBuilder.map(map: Map<String, T>): MapArgument<T> = MapArgument(map::get, map::keys)
