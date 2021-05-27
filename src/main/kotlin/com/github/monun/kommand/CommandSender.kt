@@ -43,7 +43,11 @@ fun CommandSender.sendFeedback(message: () -> ComponentLike) {
         }
     }
 
-    sendMessage(Component.join(message.invoke().asComponent()).content())
+    val messageContent = Component.join(message.invoke().asComponent()).content()
+    sendMessage(when (messageContent) {
+        "() -> net.kyori.adventure.text.ComponentLike" -> "Unknown"
+        else -> messageContent
+    })
 }
 
 fun CommandSender.sendFeedback(message: String) {
