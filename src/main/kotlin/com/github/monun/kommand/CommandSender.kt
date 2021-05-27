@@ -17,25 +17,48 @@
 package com.github.monun.kommand
 
 import net.kyori.adventure.text.ComponentLike
-import org.bukkit.GameRule
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
 fun CommandSender.sendFeedback(message: () -> ComponentLike) {
     if (this is Player) {
-        world.getGameRuleValue(GameRule.SEND_COMMAND_FEEDBACK)?.let { r ->
-            if (!r)
+        world.getGameRuleValue("sendCommandFeedback")?.let { r ->
+            val condition = when (r) {
+                "true" -> {
+                    true
+                }
+                "false" -> {
+                    false
+                }
+                else -> {
+                    false
+                }
+            }
+
+            if (!condition)
                 return
         }
     }
 
-    sendMessage(message())
+    sendMessage(message.toString())
 }
 
 fun CommandSender.sendFeedback(message: String) {
     if (this is Player) {
-        world.getGameRuleValue(GameRule.SEND_COMMAND_FEEDBACK)?.let { r ->
-            if (!r)
+        world.getGameRuleValue("sendCommandFeedback")?.let { r ->
+            val condition = when (r) {
+                "true" -> {
+                    true
+                }
+                "false" -> {
+                    false
+                }
+                else -> {
+                    false
+                }
+            }
+
+            if (!condition)
                 return
         }
     }
