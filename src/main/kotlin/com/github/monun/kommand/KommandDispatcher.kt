@@ -63,7 +63,7 @@ class KommandDispatcher(children: Map<PluginCommand, LiteralKommandBuilder>) {
         val adapter = KommandAdapter(this)
 
         for (command in children.keys) {
-            command.setExecutor(adapter)
+            command.executor = adapter
             command.tabCompleter = adapter
         }
     }
