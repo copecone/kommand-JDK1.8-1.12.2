@@ -43,8 +43,6 @@ class KommandContext(
             }
         }
 
-        println(rawArguments.joinToString(", "))
-
         this.argumentsByName = arguments
     }
 
