@@ -39,7 +39,6 @@ class KommandContext(
 
         nodes.forEachIndexed { index, kommand ->
             if (kommand is ArgumentKommand) {
-                println(rawArguments[index - 1])
                 arguments[kommand.name] = rawArguments[index - 1] to kommand.argument
             }
         }
