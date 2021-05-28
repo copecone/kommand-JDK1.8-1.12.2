@@ -77,6 +77,7 @@ class KommandDispatcher(children: Map<PluginCommand, LiteralKommandBuilder>) {
             nodes.add(root)
             var last: Kommand = root
 
+            println(args.joinToString(", "))
             for (i in 0 until args.count()) {
                 if (last.children.isEmpty()) throw KommandSyntaxException("인수를 끝내는 공백이 필요하지만, 후행 데이터가 입력되었습니다")
 
