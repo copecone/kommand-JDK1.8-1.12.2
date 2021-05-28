@@ -43,7 +43,7 @@ class KommandContext(
             }
         }
 
-        println(rawArguments[nodes.size])
+        println(rawArguments)
 
         this.argumentsByName = arguments
     }
